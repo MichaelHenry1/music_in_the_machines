@@ -3,10 +3,210 @@
 <head>
 	<title>Music in the Machines - Project 1</title>
 	<!-- link an external stylesheet or add your style tags here -->
+	<style>
+   body{
+   background-color: #f1adff;
+   }
+    h1{
+    	color:blue;
+    	font-size:50px;
+    }
+   #play{
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        position: absolute;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        padding: 7px 20px;
+        left: 32%;
+        width: 200px;
+        margin-left: -100px;
+        top: 50%;
+        border-radius: 10px;
+        color: white;
+        text-shadow: -1px -1px 1px rgba(0,0,0,0.8);
+        border: 5px solid transparent;
+        border-bottom-color: rgba(0,0,0,0.35);
+        background: hsla(260, 100%, 50%, 1);
+        cursor: pointer;
+    outline: 0 !important;
+
+        animation: pulse 1s infinite alternate;
+        transition: background 0.4s, border 0.2s, margin 0.2s;
+    }
+    #play:hover {
+        background: #ff0340;
+        margin-top: -1px;
+
+        animation: none;
+    }
+    #play:active {
+        border-bottom-width: 0;
+        margin-top: 10px;
+    }
+      @keyframes pulse {
+        0% {
+            margin-top: 0px;
+        }
+        100% {
+            margin-top: 5px; 
+        } 
+    }
+
+
+   #pause{
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        position: absolute;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        padding: 7px 20px;
+        left: 45%;
+        width: 200px;
+        margin-left: -100px;
+        top: 50%;
+        border-radius: 10px;
+        color: white;
+        text-shadow: -1px -1px 1px rgba(0,0,0,0.8);
+        border: 5px solid transparent;
+        border-bottom-color: rgba(0,0,0,0.35);
+        background: hsla(260, 100%, 50%, 1);
+        cursor: pointer;
+    outline: 0 !important;
+
+        animation: pulse 1s infinite alternate;
+        transition: background 0.4s, border 0.2s, margin 0.2s;
+    }
+    #pause:hover {
+        background: #ff0340;
+        margin-top: -1px;
+
+        animation: none;
+    }
+    #pause:active {
+        border-bottom-width: 0;
+        margin-top: 10px;
+    }
+
+       #mute{
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        position: absolute;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        padding: 7px 20px;
+        left: 58%;
+        width: 200px;
+        margin-left: -100px;
+        top: 50%;
+        border-radius: 10px;
+        color: white;
+        text-shadow: -1px -1px 1px rgba(0,0,0,0.8);
+        border: 5px solid transparent;
+        border-bottom-color: rgba(0,0,0,0.35);
+        background: hsla(260, 100%, 50%, 1);
+        cursor: pointer;
+    outline: 0 !important;
+
+        animation: pulse 1s infinite alternate;
+        transition: background 0.4s, border 0.2s, margin 0.2s;
+    }
+    #mute:hover {
+        background: #ff0340;
+        margin-top: -1px;
+
+        animation: none;
+    }
+    #mute:active {
+        border-bottom-width: 0;
+        margin-top: 10px;
+    }
+
+       #unmute{
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        position: absolute;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        padding: 7px 20px;
+        left: 71%;
+        width: 200px;
+        margin-left: -100px;
+        top: 50%;
+        border-radius: 10px;
+        color: white;
+        text-shadow: -1px -1px 1px rgba(0,0,0,0.8);
+        border: 5px solid transparent;
+        border-bottom-color: rgba(0,0,0,0.35);
+        background: hsla(260, 100%, 50%, 1);
+        cursor: pointer;
+    outline: 0 !important;
+
+        animation: pulse 1s infinite alternate;
+        transition: background 0.4s, border 0.2s, margin 0.2s;
+    }
+    #unmute:hover {
+        background: #ff0340;
+        margin-top: -1px;
+
+        animation: none;
+    }
+    #unmute:active {
+        border-bottom-width: 0;
+        margin-top: 10px;
+    }
+
+    #bord{
+    	border:5px solid red;
+    }
+
+    #vol{
+    	position:absolute;
+        left: 47%;
+        top:70%;
+    }
+
+	</style>
 </head>
 <body>
 	<!-- add your heading here -->
+
+     <center>
+	<h1> ˜”*°•. Music in the Machines ˜”*°•</h1>
+
+     </center>
 	<!-- create an audio tag and give it this source: La-traviata-opera.mp3 -->
-	<!-- add your scripts tags here -->
+	<audio src="La-traviata-opera.mp3" id="aud"></audio>
+	<button id="play">Play</button>
+	<button id="pause">Pause</button>
+	<button id="mute">Mute</button>
+	<button id="unmute">Unmute</button>
+    <input  id="vol" type="range" name="volume" value=50 oninput="volumefunc()">
+	<script>
+     var audio = document.getElementById('aud');
+     var playB = document.getElementById('play');
+     var pauseB = document.getElementById('pause');
+     var mute = document.getElementById('mute');
+     var unmute = document.getElementById('unmute');
+     var volume = document.getElementById('vol');
+     
+     playB.addEventListener('click', function(){
+     	audio.play();
+     })
+     pauseB.addEventListener('click', function(){
+     	audio.pause();
+ 
+     })
+     mute.addEventListener('click', function(){
+     	audio.muted = true;
+     })
+     unmute.addEventListener('click', function(){
+     	audio.muted = false;
+     })
+     function volumefunc(){
+     	var x = volume.value / 100;
+     	audio.volume = x;
+     }
+	</script>
 </body>
 </html>
